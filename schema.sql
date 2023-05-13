@@ -18,3 +18,20 @@ values ('Agumon', '2020-2-3', 10.23, true, 0);
 
 alter table animals
 add column species varchar(40);
+
+create table owners (
+	id serial primary key,
+	full_name varchar(50),
+	age int
+);
+
+create table species (
+	id serial primary key,
+	name varchar(40)
+);
+
+alter table animals drop id;
+alter table animals add id serial primary key;
+alter table animals drop species;
+alter table animals add species_id int references species (id);
+alter table animals add owner_id int references owners (id);
