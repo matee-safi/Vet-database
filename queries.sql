@@ -68,7 +68,6 @@ select species, avg(escape_attempts) from animals
 where date_of_birth between '1990-1-1' and '2000-12-31'
 group by species;
 
-
 select animals.name from animals
 join owners on animals.owner_id = owners.id
 where full_name = 'Melody Pond';
@@ -88,6 +87,10 @@ select animals.name from animals
 join owners on animals.owner_id = owners.id
 join species on animals.species_id = species.id
 where owners.full_name = 'Jennifer Orwell' and species.name = 'Digimon';
+
+select animals.name from animals
+join owners on animals.owner_id = owners.id
+where animals.escape_attempts = 0 and owners.full_name = 'Dean Winchester';
 
 select owners.full_name, count(animals.id) as most_animals from animals
 join owners on owners.id = animals.owner_id
