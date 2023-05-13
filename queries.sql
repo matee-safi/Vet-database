@@ -97,3 +97,70 @@ join owners on owners.id = animals.owner_id
 group by owners.full_name
 order by most_animals desc
 limit 1;
+
+select vets.name, animals.name, visits.visit_date from visits
+join vets on vet_id = vets.id
+join animals on animal_id = animals.id
+where vets.name = 'William Tatcher'
+order by visits.visit_date desc
+limit 1;
+
+select count(distinct animals.id) as total from animals
+join visits on animals.id = visits.animal_id
+join vets on vets.id = visits.vet_id
+where vets.name = 'Stephanie Mendez';
+
+select vets.name, species.name from vets
+left join specializations on specializations.vet_id = vets.id
+left join species on specializations.species_id = species.id;
+
+select animals.name, visits.visit_date from animals
+join visits on animals.id = visits.animal_id
+join vets on vets.id = visits.vet_id
+where vets.name = 'Stephanie Mendez'
+and visits.visit_date between '2020-4-1' and '2020-8-30';
+
+select animals.name, count(animals.name) as visit_count from animals
+join visits on visits.animal_id = animals.id
+group by animals.name
+order by visit_count desc
+limit 1;
+
+select animals.name, visits.visit_date from animals
+join visits on visits.animal_id = animals.id
+join vets on visits.vet_id = vets.id
+where vets.name = 'Maisy Smith'
+order by visits.visit_date
+limit 1;
+
+select animals.name as animal_name,
+animals.date_of_birth,
+animals.escape_attempts,
+animals.neutered,
+animals.weight_kg as animal_weight,
+owners.full_name as owner,
+vets.name as vet_name,
+vets.age as vet_age,
+vets.date_of_graduation as vet_graduation_date,
+visits.visit_date
+from visits
+join animals on animals.id = visits.animal_id
+join vets on vets.id = visits.vet_id
+join owners on owners.id = animals.owner_id
+order by visits.visit_date desc
+limit 1;
+
+select count(visits.id) from visits
+left join vets on visits.vet_id = vets.id
+left join specializations on vets.id = specializations.vet_id
+where specializations.vet_id is null;
+
+select species.name as species, count(species.id) as total_visits from visits
+left join vets on visits.vet_id = vets.id
+left join specializations on vets.id = specializations.vet_id
+join animals on visits.animal_id = animals.id
+join species on animals.species_id = species.id
+where vets.name = 'Maisy Smith'
+group by species.name
+order by total_visits desc
+limit 1;
