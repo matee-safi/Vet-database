@@ -58,3 +58,40 @@ where name in ('Charmander', 'Squirtle', 'Blossom');
 update animals
 set owner_id = 5
 where name in ('Angemon', 'Boarmon');
+
+insert into vets(name, age, date_of_graduation)
+values ('William Tatcher', 45, '2000-4-23'),
+('Maisy Smith', 26, '2019-1-17'),
+('Stephanie Mendez', 64, '1981-5-4'),
+('Jack Harkness', 38, '2008-6-8');
+
+insert into specializations(vet_id, species_id)
+values (1, 1),
+(3, 1),
+(3, 2),
+(4, 2);
+
+insert into visits(animal_id, vet_id, visit_date)
+values (1, 1, '2020-5-24'),
+(1, 3, '2020-7-22'),
+(2, 4, '2021-2-2'),
+(7, 2, '2020-1-5'),
+(7, 2, '2020-3-8'),
+(7, 2, '2020-5-14'),
+(3, 3, '2021-5-4'),
+(8, 4, '2021-2-24'),
+(4, 2, '2019-12-21'),
+(4, 1, '2020-8-10'),
+(4, 2, '2021-4-7'),
+(9, 3, '2019-9-29'),
+(5, 4, '2020-10-3'),
+(5, 4, '2020-11-4'),
+(6, 2, '2019-1-24'),
+(6, 2, '2019-5-15'),
+(6, 2, '2020-2-27'),
+(6, 2, '2020-8-3'),
+(10, 3, '2020-5-24'),
+(10, 1, '2021-1-11');
+
+
+
