@@ -166,7 +166,7 @@ order by total_visits desc
 limit 1;
 
 EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4;
-
+-- Using technique of query tuning , we can use vet_id instead of selecting everything, which reduces the execution time
 EXPLAIN ANALYZE SELECT vet_id
 FROM visits
 WHERE vet_id = 2;
