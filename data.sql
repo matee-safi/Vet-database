@@ -98,7 +98,7 @@ SELECT animal_ids.id, vets_ids.id, visit_timestamp
 FROM (SELECT id FROM animals) AS animal_ids
 CROSS JOIN (SELECT id FROM vets) AS vets_ids
 CROSS JOIN generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') AS visit_timestamp;
-
+-- Alter sequence because it had duplicate Ids that result in errors
 ALTER SEQUENCE owners_id_seq RESTART WITH 2500001;
 
 insert into owners (full_name, email) select 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
