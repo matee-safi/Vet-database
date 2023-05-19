@@ -102,7 +102,8 @@ After you're finished please remove all the comments and instructions!
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> Live demo not available yet.
+- <a href="https://drawsql.app/teams/rishis-team/diagrams/vet-clinic">View diagram</a>
+<img src="./Diagram.png" alt="Diagram">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
