@@ -15,13 +15,13 @@ values ('Charmander', '2020-2-8', 11, false, 0),
 ('Blossom', '1998-10-13', 17, true, 3),
 ('Ditto', '2022-5-14', 22, true, 4);
 
-insert into owners (id, full_name, age)
-values(1, 'Sam Smith', 34),
-(2, 'Jennifer Orwell', 19),
-(3, 'Bob', 45),
-(4, 'Melody Pond', 77),
-(5, 'Dean Winchester', 14),
-(6, 'Jodie Whittaker', 38);
+insert into owners (full_name, age)
+values('Sam Smith', 34),
+('Jennifer Orwell', 19),
+('Bob', 45),
+('Melody Pond', 77),
+('Dean Winchester', 14),
+('Jodie Whittaker', 38);
 
 select * from owners;
 
@@ -93,5 +93,13 @@ values (1, 1, '2020-5-24'),
 (10, 3, '2020-5-24'),
 (10, 1, '2021-1-11');
 
+INSERT INTO visits (animal_id, vet_id, visit_date)
+SELECT animal_ids.id, vets_ids.id, visit_timestamp
+FROM (SELECT id FROM animals) AS animal_ids
+CROSS JOIN (SELECT id FROM vets) AS vets_ids
+CROSS JOIN generate_series('1980-01-01'::timestamp, '2021-01-01', '4 hours') AS visit_timestamp;
+-- Alter sequence because it had duplicate Ids that result in errors
+ALTER SEQUENCE owners_id_seq RESTART WITH 2500001;
 
+insert into owners (full_name, email) select 'Owner ' || generate_series(1,2500000), 'owner_' || generate_series(1,2500000) || '@mail.com';
 

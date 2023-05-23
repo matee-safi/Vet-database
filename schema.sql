@@ -55,3 +55,11 @@ create table visits(
 	vet_id int references vets (id),
     visit_date date
 );
+-- Add email column to owners table
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+-- Using indexing method to reduce execution time
+CREATE INDEX idx_visits_animal_id_date ON visits(animal_id, visit_date);
+-- Using indexing method to reduce execution time
+CREATE INDEX idx_visits_vet_id ON visits(vet_id);
+-- Using indexing method to reduce execution time
+CREATE INDEX idx_owners_email ON owners(email);
